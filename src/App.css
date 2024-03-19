@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --robot-font:"Roboto", sans-serif;
+  --theme-gold:#A35709;
+  --color-brown: #242320;
+}
+section{
+  position: relative;
+  padding: 50px 0;
+}
+div{
+  position: relative;
+}
+body{
+  background: #1B1A17;
+  color: #FFFFFF;
+}
+
+/* // header */
+header{
+  background: #242320;
+}
+.header-inner {
+  height: 82px;
+  border: 2px solid var(--theme-gold);
+}
+.header-inner h2{
+  padding: 10px 20px;
+  font-family: var(--robot-font);
+  font-size: 24px;
+}
+.header-inner h2 span{
+  font-size: 18px;
+  color: #F0E3CA;
+
+}
+.todoForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todoForm .todo-inputs input {
+  display: block;
+  width: 466px;
+  margin: 5px 10px;
+  padding: 4px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: var(--color-brown);
+  border: 1px solid var(--theme-gold);
+  color: #F0E3CA;
+  font-size: 14px;
+  font-family: var(--robot-font);
+}
+.todo-add img{
+  cursor: pointer;
+}
+.todoItemBox{
+  border: 1px solid var(--theme-gold);
+  min-height: 426px;
+  border-radius: 8px;
+}
+.todo-item {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid var(--theme-gold);
+  border-radius: 8px;
+}
+.todo-item h2{
+  font-size: 22px;
+  color: #F0E3CA;
+}
+.todo-item p{
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #F0E3CA;
+}
+.info-btn img{
+  margin: 0 5px;
+  cursor: pointer;
+}
