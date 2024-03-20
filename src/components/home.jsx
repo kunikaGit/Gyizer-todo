@@ -5,8 +5,9 @@ import TodoItem from "./todoItems";
 import { Container, Row } from "react-bootstrap";
 
 const Home = () => {
-   // Value of todos
    const [todos, setTodos] = useState([]);
+   const [oldvalues, setOldvalues] = useState();
+   const [isUpdate, setIsUpdate] = useState(false);
 
    const addTodo = todo => {
       setTodos([...todos, todo]);
@@ -14,23 +15,51 @@ const Home = () => {
    const deleteTodo = todoToDelete => {
       setTodos(todos.filter(todo => todo !== todoToDelete));
    };
-    
-   const updateTodo = (todoUpdate,key) =>{
-      console.log(todoUpdate)
-      console.log(key)
+
+   const updateTodo = (todoUpdate, key) => {
+      let obj = { title: todoUpdate.title, input: todoUpdate.input, key: key }
+      setOldvalues(obj)
+      setIsUpdate(true)
    }
+
+   const setNewValues = details => {
+
+      const updatedTodos = [...todos];
+
+      updatedTodos[details.key] = {
+         title: details.title,
+         input: details.input
+      };
+
+      setTodos(updatedTodos);
+      setOldvalues()
+      setIsUpdate(false)
+   }
+
    return (
       <>
          <Header />
-         <TodoForm addTodo={addTodo}  />
+         <TodoForm addTodo={addTodo} sendOldValues={oldvalues} sendUpdateValues={setNewValues} />
          <Container>
             <div className="todoItemBox">
-               <Row>
+              
+                  {todos.length === 0 ? (
+                     <div className="no-data">
+                        <span>No data</span>
+                     </div>
+                  ) : (
+                     <Row>
+                        {todos.map((todo, index) => (
+                           <TodoItem task={todo} keyOn={index} onDelete={deleteTodo} onUpdate={updateTodo} isThereUpdate={isUpdate} />
+                        ))}
+                      </Row>
+                  )}
+              
+               {/* <Row>
                   {todos.map((todo, index) => (
-                     
-                     <TodoItem task={todo} key={index}  onDelete={deleteTodo} onUpdate={updateTodo}/>
+                     <TodoItem task={todo} keyOn={index}  onDelete={deleteTodo} onUpdate={updateTodo} isThereUpdate={isUpdate}/>
                   ))}
-               </Row>
+               </Row> */}
             </div>
          </Container>
       </>
