@@ -16,6 +16,7 @@ const TodoItem = ({ task, keyOn, onDelete, onUpdate, isThereUpdate }) => {
     const handleDelete = () => {
         setButtonVisible(true);
         onDelete(task);
+        setShow(false)
     };
 
     const handleUpdate = () => {
